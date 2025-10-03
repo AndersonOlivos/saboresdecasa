@@ -7,6 +7,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -41,4 +43,6 @@ public class Pedido {
     @ManyToOne
     private Mesa mesa;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido")
+    private Set<LPedido> lPedidos = new HashSet<>();
 }

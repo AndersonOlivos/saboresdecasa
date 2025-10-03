@@ -1,6 +1,8 @@
 package org.safa.saboresdecasa.modelos;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -36,5 +38,8 @@ public class Producto {
     @Column(name = "subtipo")
     @Enumerated(EnumType.ORDINAL)
     private SubtipoProducto subtipo;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "producto")
+    private Set<LPedido> lPedidos = new HashSet<>(0);
 
 }

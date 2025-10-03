@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Getter
 @Setter
 @ToString
@@ -29,4 +32,6 @@ public class Mesa {
     @Column(name = "num_comensales_max")
     private Integer numComensalesMax;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido")
+    private Set<Pedido> pedido = new HashSet<>(0);
 }

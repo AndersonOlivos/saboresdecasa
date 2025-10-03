@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Getter
 @Setter
 @ToString
@@ -34,4 +37,7 @@ public class Cliente {
 
     @Column(name = "contrasena")
     private String contrasena;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente")
+    private Set<Pedido> pedido = new HashSet<>(0);
 }

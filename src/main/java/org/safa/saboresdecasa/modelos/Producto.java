@@ -39,7 +39,4 @@ public class Producto {
     @Enumerated(EnumType.ORDINAL)
     private SubtipoProducto subtipo;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "producto")
-    private Set<LPedido> lPedidos = new HashSet<>(0);
-
 }

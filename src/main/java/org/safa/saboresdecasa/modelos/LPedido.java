@@ -32,21 +32,4 @@ public class LPedido {
     @ManyToOne
     private Producto producto;
 
-    /*
-
-    EJEMPLO DE MANY TO MANY (TABLA N:M SIN ATRIBUTOS)
-
-    @ManyToMany
-    @JoinTable(
-        name="planta_acuario", catalog = "postgres", schema = "saboresdecasa",
-        joinColumns = {
-            @JoinColumn(name = "id_acuario", nullable = false)
-        },
-        inverseJoinColumns = {
-            @JoinColumn(name = "id_planta", nullable = false)
-        }
-    )
-
-     */
-
 }

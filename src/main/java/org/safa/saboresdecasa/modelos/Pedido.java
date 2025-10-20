@@ -1,5 +1,6 @@
 package org.safa.saboresdecasa.modelos;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -33,6 +34,7 @@ public class Pedido {
     private BigDecimal precioTotal;
 
     @Column(name = "estado")
+    @Enumerated(EnumType.ORDINAL)
     private EstadoPedido estadoPedido;
 
     @JoinColumn(name = "id_cliente")
@@ -42,7 +44,4 @@ public class Pedido {
     @JoinColumn(name = "id_mesa")
     @ManyToOne
     private Mesa mesa;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido")
-    private Set<LPedido> lPedidos = new HashSet<>();
 }

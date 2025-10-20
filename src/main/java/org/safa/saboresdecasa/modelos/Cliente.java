@@ -1,5 +1,7 @@
 package org.safa.saboresdecasa.modelos;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -37,7 +39,4 @@ public class Cliente {
 
     @Column(name = "contrasena")
     private String contrasena;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente")
-    private Set<Pedido> pedido = new HashSet<>(0);
 }

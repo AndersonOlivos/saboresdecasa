@@ -1,13 +1,12 @@
 package org.safa.saboresdecasa.controladores;
 
+import org.safa.saboresdecasa.DTO.LPedidoDTO;
+import org.safa.saboresdecasa.DTO.MesaDTO;
 import org.safa.saboresdecasa.modelos.LPedido;
 import org.safa.saboresdecasa.modelos.Pedido;
 import org.safa.saboresdecasa.servicios.LPedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,5 +27,19 @@ public class LPedidoController {
         return lPedidoService.obtenerListaPedidoPorId(id);
     }
 
+    @DeleteMapping("/delete/{id}")
+    public void eliminarListaPedidoPorId(@PathVariable Integer id) {
+        lPedidoService.eliminarListaPedidoPorId(id);
+    }
+
+    @PostMapping("/post")
+    public void crearListaPedido(@RequestBody LPedidoDTO dto) {
+        lPedidoService.crearListaPedido(dto);
+    }
+
+    @PostMapping("/edit/{id}")
+    public void editarListaPedido(@PathVariable Integer id, @RequestBody LPedidoDTO dto) {
+        lPedidoService.editarListaPedido(id, dto);
+    }
 
 }

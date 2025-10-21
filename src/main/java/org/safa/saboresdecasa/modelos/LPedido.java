@@ -31,5 +31,4 @@ public class LPedido {
     @JoinColumn(name = "id_producto")
     @ManyToOne
     private Producto producto;
-
 }

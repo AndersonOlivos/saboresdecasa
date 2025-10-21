@@ -1,5 +1,7 @@
 package org.safa.saboresdecasa.servicios;
 
+import org.safa.saboresdecasa.DTO.MesaDTO;
+import org.safa.saboresdecasa.DTO.ProductoDTO;
 import org.safa.saboresdecasa.modelos.Mesa;
 import org.safa.saboresdecasa.modelos.Producto;
 import org.safa.saboresdecasa.repositorios.IProductoRepository;
@@ -14,13 +16,42 @@ public class ProductoService {
     @Autowired
     private IProductoRepository productoRepository;
 
-    @GetMapping
     public List<Producto> obtenerProductos(){
         return productoRepository.findAll();
     }
 
-    @GetMapping
     public Producto obtenerProductoPorId(Integer id){
         return productoRepository.findById(id).orElse(null);
+    }
+
+    public void eliminarProductoPorId(Integer id){
+        productoRepository.deleteById(id);
+    }
+
+    public void crearProducto(ProductoDTO dto){
+        Producto producto  = new Producto();
+
+        producto.setNombre(dto.getNombre());
+        producto.setIngredientes(dto.getIngredientes());
+        producto.setTipo(dto.getTipo());
+        producto.setSubtipo(dto.getSubtipo());
+        producto.setPrecio(dto.getPrecio());
+
+        productoRepository.save(producto);
+    }
+
+    public void editarProducto(Integer id,ProductoDTO dto){
+
+        Producto producto = productoRepository.findById(id).orElse(null);
+
+        if(producto != null){
+            producto.setNombre(dto.getNombre());
+            producto.setIngredientes(dto.getIngredientes());
+            producto.setTipo(dto.getTipo());
+            producto.setSubtipo(dto.getSubtipo());
+            producto.setPrecio(dto.getPrecio());
+
+            productoRepository.save(producto);
+        }
     }
 }
